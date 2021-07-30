@@ -1,0 +1,29 @@
+NAME		= fractol
+CC			= gcc
+SRC			= main.c	
+
+OBJ			= $(SRC:%.c=%.o)
+FLAGS		= -Wall -Wextra -Werror -O3
+INCL		= fractol.h
+
+MLXDIR	= ./minilibx/
+MLX		= -lmlx -lX11 -lXext -L$(MLXDIR)
+MLXLIB	= $(addprefix $(MLXDIR), libmlx.a)
+
+.PHONY: all clean fclean re
+
+all: $(NAME)
+
+%.o: %.c $(INCL)
+	clang $(FLAGS) -c $< -o $@ -I $(INCL)
+
+$(NAME): $(OBJ) $(MLXLIB)
+	gcc $(OBJ) -o $(NAME) $(MLX)
+
+$(MLXLIB):
+	make -sC $(MLXDIR)
+clean:
+	@rm -rf $(OBJ)
+fclean: clean
+	@rm -f $(NAME)
+re: fclean all
