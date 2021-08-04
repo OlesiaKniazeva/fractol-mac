@@ -135,20 +135,7 @@ void	draw_burning_ship2(t_vars *vars)
 // 	paint(vars, co, i); 
 // }
 
-void	draw_mandelbrot2(t_vars *vars)
-{
-	int i;
-	t_comp	z;
 
-	z = init_complex(vars->pix.re, vars->pix.im);
-	i = 0;
-	while (pow(z.re, 2.0) + pow(z.im, 2.0) <= 4 && i < vars->iter)
-	{
-		z = init_complex(pow(z.re, 2.0) - pow(z.im, 2.0) + vars->pix.re, 2.0 * z.re * z.im + vars->pix.im);
-		i++;
-	}
-	paint2(vars, i); 
-}
 
 // void	draw_mandelbrot(t_ps *co, t_comp *pix, t_vars *vars)
 // {
@@ -181,6 +168,8 @@ void	draw_mandelbrot2(t_vars *vars)
 // 		paint(vars, co, i);
 // }
 
+
+
 void	paint2(t_vars *vars, int i)
 {
 	double	t;
@@ -194,6 +183,21 @@ void	paint2(t_vars *vars, int i)
 		// pixel_put(vars, co->x, co->y, 0x00FFFFFF);
 	// else 
 	// 	pixel_put(vars, co->x, co->y, 0x00000000);
+}
+
+void	draw_mandelbrot2(t_vars *vars)
+{
+	int i;
+	t_comp	z;
+
+	z = init_complex(vars->pix.re, vars->pix.im);
+	i = 0;
+	while (pow(z.re, 2.0) + pow(z.im, 2.0) <= 4 && i < vars->iter)
+	{
+		z = init_complex(pow(z.re, 2.0) - pow(z.im, 2.0) + vars->pix.re, 2.0 * z.re * z.im + vars->pix.im);
+		i++;
+	}
+	paint2(vars, i); 
 }
 
 void	draw_julia2(t_vars *vars)
