@@ -97,7 +97,7 @@ typedef struct	s_vars
 # define ESC 53
 # define SCROLL_IN 4
 # define SCROLL_OUT 5
-# define STEP 0.05
+# define STEP 200
 # define STEP_Z 0.5
 # define UP_PREC 0
 # define DOWN_PREC 2

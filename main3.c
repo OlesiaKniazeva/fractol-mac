@@ -168,8 +168,10 @@ void	draw_fractal(t_vars *vars)
 		vars->line = 0;
 		while (vars->line < WIDTH)
 		{
-			vars->c_re = (vars->line - WIDTH / 2.0) * 4.0 / WIDTH * vars->zoom + vars->move_x;
-			vars->c_im = (vars->column - HEIGHT / 2.0) * 4.0 / WIDTH * vars->zoom + vars->move_y;
+			vars->c_re = (vars->line - WIDTH  / 2.0) * 4.0  / WIDTH * vars->zoom + vars->move_x;
+			vars->c_im = (vars->column - HEIGHT/ 2.0) * 4.0 / WIDTH * vars->zoom + vars->move_y;
+			// vars->c_re = vars->line / vars->zoom + vars->move_x;
+			// vars->c_im = vars->column / vars->zoom + vars->move_y;
 			choose_fractol(vars);
 			vars->line++;
 		}
@@ -191,13 +193,13 @@ void	choose_fractol(t_vars *vars)
 int	key_hook(int key, t_vars *vars)
 {
 	if (key == UP)
-		vars->move_y -= STEP;
+		vars->move_y += 30 / STEP;
 	else if (key == DOWN)
-		vars->move_y += STEP;
+		vars->move_y -= 30 / STEP;
 	else if (key == LEFT)
-		vars->move_x -= STEP;
+		vars->move_x += 30 / STEP;
 	else if (key == RIGHT)
-		vars->move_x += STEP;
+		vars->move_x -= 30 / STEP;
 	// if (key == UP)
 	// 	vars->move_y -= 0.003 * STEP / vars->zoom;
 	// else if (key == DOWN)
@@ -206,7 +208,7 @@ int	key_hook(int key, t_vars *vars)
 	// 	vars->move_x -= 0.003 * STEP / vars->zoom;
 	// else if (key == RIGHT)
 	// 	vars->move_x += 0.003 * STEP / vars->zoom;	
-		printf("x=%f, y=%f\n", vars->move_x, vars->move_y);
+		// printf("x=%f, y=%f\n", vars->move_x, vars->move_y);
 	// if (key == UP || key == DOWN || key == RIGHT || key == LEFT)
 	// 	move(key, vars);
 	// keycode = 1; 
@@ -214,10 +216,10 @@ int	key_hook(int key, t_vars *vars)
 	if (key == ESC)
 		exit (1);
 	if (key == UP_PREC)
-		vars->max++;
+		vars->max += 50;
 	if (key == DOWN_PREC)
-		vars->max--;
-	printf("iter=%f\n", vars->iter);	
+		vars->max -= 50;
+	// printf("iter=%f\n", vars->iter);	
 	draw_fractal(vars);
 	// draw_image4(vars);
 	// if (key == SCROLL_IN)
@@ -226,16 +228,42 @@ int	key_hook(int key, t_vars *vars)
 	return (0);
 }
 
+void	zoom_in(int x, int y, t_vars *vars)
+{
+	int a = x + y;
+	a++;
+	// x = 0;
+	// y = 0;
+	// vars->move_x = (x / vars->zoom + vars->x) - (x / (vars->zoom));
+	// vars->move_y = (y / vars->zoom + vars->y) - (y / (vars->zoom));
+	vars->zoom *= 1.3;
+	// vars->max++;
+}
+
+void	zoom_out(int x, int y, t_vars *vars)
+{
+	// x = 0;
+	// y = 0;
+	int a = x + y;
+	a++;
+	// vars->move_x = (x / vars->zoom + vars->x)  - (x / (vars->zoom));
+	// vars->move_y = (y / vars->zoom + vars->y) - (y / (vars->zoom));
+	vars->zoom /= 1.3;
+	// vars->max--;
+}
+
 int	zoom_mouse(int button, int x, int y, t_vars *vars)
 {
-	x = 0;
-	y = 0;
+	// x = 0;
+	// y = 0;
 	if (button == SCROLL_IN)
+		zoom_in(x, y, vars);
 		// exit (2);
-		vars->zoom *= STEP_Z;
+		// vars->zoom *= STEP_Z;
 	else if (button == SCROLL_OUT)
-		vars->zoom /= STEP_Z;
-	printf("%f\n", vars->zoom);	
+		zoom_out(x, y, vars);
+		// vars->zoom /= STEP_Z;
+	// printf("%f\n", vars->zoom);	
 	draw_fractal(vars);
 	// draw_image2(vars);
 	return (0);
@@ -243,7 +271,7 @@ int	zoom_mouse(int button, int x, int y, t_vars *vars)
 
 void	init_data(t_vars *vars)
 {
-	vars->zoom = 200;
+	vars->zoom = 1;
 	vars->move_x = 0;
 	vars->move_y = 0;
 	vars->max = 50;
