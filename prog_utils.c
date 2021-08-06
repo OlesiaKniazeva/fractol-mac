@@ -4,7 +4,9 @@ void	check_args(int argc, char **argv, t_vars *vars)
 {
 	if (argc != 2 || (ft_strncmp(argv[1], "Julia", 6) && ft_strncmp(argv[1], "1", 5)\
 	 && ft_strncmp(argv[1], "2", 5) && ft_strncmp(argv[1], "3", 5)\
-	  && ft_strncmp(argv[1], "Mandelbrot", 15) && ft_strncmp(argv[1], "Burning_ship", 15)))
+	  && ft_strncmp(argv[1], "Mandelbrot", 15) && \
+	  ft_strncmp(argv[1], "Burning_ship", 15) && ft_strncmp(argv[1], "mandelbrot", 15) \
+	  && ft_strncmp(argv[1], "julia", 6) && ft_strncmp(argv[1], "burning_ship", 15)))
 	{
 		printf("%s\n", "\nChoose which fractal to show, write number of fractal or its name as argument to see it:\n1 - Mandelbrot\n 2 - Julia\n 3 - Burning_ship\n");
 		exit (1);
@@ -14,11 +16,11 @@ void	check_args(int argc, char **argv, t_vars *vars)
 
 // void	choose_fractol(t_vars *vars)
 // {
-// 	if (!ft_strncmp(vars->arg, "Julia", 6) || !ft_strncmp(vars->arg, "2", 5))
+// 	if (!ft_strncmp(vars->arg, "Julia", 6) || !ft_strncmp(vars->arg, "2", 5) || !ft_strncmp(argv[1], "julia", 6))
 // 		draw_julia2(vars);
-// 	else if (!ft_strncmp(vars->arg, "1", 5) || !ft_strncmp(vars->arg, "Mandelbrot", 15))
+// 	else if (!ft_strncmp(vars->arg, "1", 5) || !ft_strncmp(vars->arg, "Mandelbrot", 15) || !ft_strncmp(vars->arg, "mandelbrot", 15))
 // 		draw_mandelbrot2(vars);
-// 	else if (!ft_strncmp(vars->arg, "3", 5) || !ft_strncmp(vars->arg, "Burning_ship", 15))
+// 	else if (!ft_strncmp(vars->arg, "3", 5) || !ft_strncmp(vars->arg, "Burning_ship", 15) || !ft_strncmp(vars->arg, "burning_ship", 15))
 // 		draw_burning_ship2(vars);
 // }
 

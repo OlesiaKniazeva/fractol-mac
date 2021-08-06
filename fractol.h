@@ -23,12 +23,24 @@ typedef struct	s_vars
 	double	c_im;
 	double	x;
 	double	y;
-	int		iter;
+	double	iter;
 	double	x_new;
 	char	*arg;
+	double	zoom;
+	double	move_x;
+	double	move_y;
+	int		max;
+	double	log_zn;
+	double	nu;
+
 
 }				t_vars;
 
+// typedef struct s_colours
+// {
+// 	int	colour;
+
+// }
 // typedef struct	s_comp
 // {
 // 	double	re;
@@ -85,11 +97,12 @@ typedef struct	s_vars
 # define ESC 53
 # define SCROLL_IN 4
 # define SCROLL_OUT 5
-# define STEP 700
+# define STEP 0.05
+# define STEP_Z 0.5
 # define UP_PREC 0
 # define DOWN_PREC 2
 
-# define MAX 50
+// # define MAX 50
 
 # define JU_RE 0.285
 # define JU_IM 0.01

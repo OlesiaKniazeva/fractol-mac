@@ -213,6 +213,7 @@ void	draw_julia2(t_vars *vars)
         2.0 * z.re * z.im + JU_IM);
 		i++;
 	}
+	printf("%d\n", i);
 		paint2(vars, i);
 }
 
