@@ -32,6 +32,12 @@ typedef struct	s_vars
 	int		max;
 	double	log_zn;
 	double	nu;
+	// double	min_re;
+	// double	max_re;
+	// double	min_im;
+	// double	max_im;
+	// double	factor_re;
+	// double	factor_im;
 
 
 }				t_vars;
@@ -95,8 +101,8 @@ typedef struct	s_vars
 # define LEFT 123
 # define RIGHT 124 
 # define ESC 53
-# define SCROLL_IN 4
-# define SCROLL_OUT 5
+# define SCROLL_IN 5
+# define SCROLL_OUT 4
 # define STEP 200
 # define STEP_Z 0.5
 # define UP_PREC 0

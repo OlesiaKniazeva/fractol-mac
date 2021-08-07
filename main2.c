@@ -161,7 +161,7 @@ int	key_hook(int key, t_vars *vars)
 		vars->max++;
 	if (key == DOWN_PREC)
 		vars->max--;
-	printf("iter=%d\n", vars->iter);	
+	// printf("iter=%d\n", vars->iter);	
 	draw_fractal(vars);
 	// draw_image4(vars);
 	// if (key == SCROLL_IN)
