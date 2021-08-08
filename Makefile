@@ -12,7 +12,7 @@ CFLAGS= -I$(INC) -O3 -Imlx -g
 
 HEADER = fractol.h
 
-SRCS = main3.c prog_utils.c
+SRCS = main.c prog_utils.c hooks.c fractal_formula.c
 
 RM = rm -f
 

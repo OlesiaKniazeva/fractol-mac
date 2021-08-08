@@ -4,5 +4,6 @@
 		"__hash_table": "c",
 		"functional": "c",
 		"type_traits": "c"
-	}
+	},
+	"C_Cpp.errorSquiggles": "Disabled"
 }
